@@ -1,7 +1,9 @@
+from sraw.animals import Animals
 
-def test1():
-    yield "link"
+x = Animals(link=True, fact=True, rjson=True)
 
-for i in test1():
-    print(i)
 
+y = x.cat()
+
+
+print(y)
