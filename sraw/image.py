@@ -6,7 +6,7 @@ import requests
 
 class Image:
 
-    def __init__(self, rjson: bool = True, image: bool = False):
+    def __init__(self, rjson: bool = False, image: bool = False):
         self.rjson = rjson
         self.image = image
 

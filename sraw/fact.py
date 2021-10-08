@@ -6,7 +6,7 @@ import requests
 
 class Fact:
 
-    def __init__(self, rjson: bool = True):
+    def __init__(self, rjson: bool = False):
         self.rjson = rjson
 
 
