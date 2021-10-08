@@ -1,3 +1,34 @@
+from . import errors
+
+import requests
+
+
+
+class Image:
+
+    def __init__(self, rjson: bool = True, image: bool = False):
+        self.rjson = rjson
+        self.image = image
+
+
+    def dog(self):
+        req = requests.get("https://some-random-api.ml/img/dog")
+
+        if 300 > req.status_code >= 200:
+            cont = req.json()
+        else:
+            raise errors.BadResponseFromAPI
+        
+        if self.rjson == True:
+            return cont
+        
+        if self.image == True:
+            req_img = requests.get(f"{cont['link']}").content
+            return req_img
+        
+        return cont['link']
+
+
     def panda(self):
         req = requests.get("https://some-random-api.ml/img/panda")
 
