@@ -1,9 +1,9 @@
-from sraw.animals import Animals
+from sraw.misc import Misc
 
-x = Animals(link=True, fact=True, rjson=True)
+x = Misc()
 
 
-y = x.cat()
+y = x.lyrics(title="On my way alan walker")
 
 
 print(y)

@@ -7,7 +7,9 @@ class BadResponseFromAPI(Error):
     """Raised when there is a bad response from the API"""
     pass
 
-
+class NoTitleProvided(Error):
+    """Raised when there the song title is not given"""
+    pass
 
 
 
