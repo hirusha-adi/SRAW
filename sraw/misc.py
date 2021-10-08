@@ -193,3 +193,25 @@ class Misc:
         return (cont["username"], cont["uuid"], cont["name_history"])
 
     
+    def meme(self, image_only: bool = False, caption_only: bool = False):
+        req = requests.get("https://some-random-api.ml/meme")
+
+        if 300 > req.status_code >= 200:
+            cont = req.json()
+        else:
+            raise errors.BadResponseFromAPI
+
+        if self.rjson == True:
+            return cont
+        
+        if image_only == True:
+            req_image = requests.get(cont["image"]).content
+            return req_image
+        
+        if caption_only == True:
+            return cont["caption"]
+
+        return (cont["id"], cont["image"], cont["caption"], cont["category"])
+
+
+
