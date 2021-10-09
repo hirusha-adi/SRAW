@@ -214,4 +214,43 @@ class Misc:
         return (cont["id"], cont["image"], cont["caption"], cont["category"])
 
 
+    def discord_bot_token(self, id = None):
+        req = requests.get("https://some-random-api.ml/bottoken")
+
+        if 300 > req.status_code >= 200:
+            cont = req.json()
+        else:
+            raise errors.BadResponseFromAPI
+
+        if self.rjson == True:
+            return cont
+
+        return str(cont["token"])
+
+    def chatbot(self, key, message: str = None):
+        params_query = {}
+        linka = "https://some-random-api.ml/chatbot"
+
+        if bool(key) == False:
+            raise errors.NoKeyProvided
+        else:
+            params_query['key'] = key
+
+        if bool(message) == False:
+            raise errors.NoMessageProvided
+        else:
+            params_query['message'] = message
+
+        query_string = parse.urlencode(params_query)
+        req = requests.get(f"{linka}?{query_string}")
+
+        if 300 > req.status_code >= 200:
+            cont = req.json()
+        else:
+            raise errors.BadResponseFromAPI
+
+        if self.rjson == True:
+            return cont
+        
+        return cont
 

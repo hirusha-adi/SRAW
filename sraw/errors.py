@@ -15,8 +15,13 @@ class NoPokemonProvided(Error):
     """Raised when there the pokemon name is not given"""
     pass
 
+class NoKeyProvided(Error):
+    """Raised when there the API key is not given"""
+    pass
 
-
+class NoMessageProvided(Error):
+    """Raised when there the message is not given in the chatbot command"""
+    pass
 
 
 
